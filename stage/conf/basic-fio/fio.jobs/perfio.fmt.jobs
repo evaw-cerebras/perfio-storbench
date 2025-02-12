@@ -1,0 +1,7 @@
+[perfio_fmt_rw_mixed25]
+[perfio_fmt_rw_mixed50]
+[perfio_fmt_rw_mixed75]
+[perfio_fmt_read_throughput]
+[perfio_fmt_write_throughput]
+[perfio_fmt_read_iops]
+[perfio_fmt_write_iops]

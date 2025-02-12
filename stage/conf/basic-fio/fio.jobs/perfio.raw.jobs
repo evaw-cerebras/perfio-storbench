@@ -1,0 +1,8 @@
+[perfio_raw_write_bw]
+[perfio_raw_write_iops]
+[perfio_raw_write_latency]
+[perfio_raw_read_bw]
+[perfio_raw_read_iops]
+[perfio_raw_read_latency]
+[perfio_raw_read_seq_bw]
+[perfio_raw_write_seq_bw]

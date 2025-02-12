@@ -1,0 +1,37 @@
+#------------------------------------------------------------------------------#
+[benchfio]
+type                = {{ BENCH_MODE|default("device", true) }}
+target              = {{ BENCH_TARGET|default("/dev/null", true) }}
+parallel            = {{ BENCH_PARALLEL_BOOL|default("True", true) }}
+output              = {{ BENCH_OUTPUT_FORMAT|default("benchmark", true) }}
+size                = {{ BENCH_MODE_TYPE_FILE_SIZE|default("8G", true) }}
+mode                = {{ BENCH_MODE_LIST_CHARS|default("randread,randwrite,rw,write", true) }}
+rwmixread           = {{ BENCH_MIXED_RATIO_READ_PERC|default("75", true) }}
+loops               = {{ BENCH_VALIDATE_LOOPS_INT|default("1", true) }}
+iodepth             = {{ BENCH_IO_DEPTH_LIST|default("1,2,4,8,16,32,64", true) }}
+numjobs             = {{ BENCH_IO_JOBS_LIST|default("1,2,4,8,16,32,64", true) }}
+direct              = {{ BENCH_DIRECT_BOOL_INT|default("1", true) }}
+engine              = {{ BENCH_IO_ENGINE|default("posixaio", true) }}
+precondition        = {{ BENCH_PRECONDITION_BOOL|default("False", true) }}
+precondition_repeat = {{ BENCH_PRECONDITION_REPEAT_BOOL|default("False", true) }}
+invalidate          = {{ BENCH_CACHE_INVALIDATE_BOOL_INT|default("1", true) }}
+runtime             = {{ BENCH_RUNTIME_SECONDS_INT|default("300", true) }}
+create              = {{ BENCH_DAT_CREATE_BOOL|default("True", true) }}
+destructive         = {{ BENCH_DAT_DESTRUCT_BOOL|default("True", true) }}
+extra_opts          = {{ BENCH_EXT_OPTS_STR|default("norandommap=1,refill_buffers=1", true) }}
+
+# Steady-State Aware Read-Workload:
+#   extra_opts = {{ BENCH_EXT_OPTS_STR|default("norandommap=1,refill_buffers=1,ss=bw_slope:1%,ss_dur=10s,ss_ramp=5s", true) }}
+# Steady-State Aware Write-Workload:
+#   extra_opts = {{ BENCH_EXT_OPTS_STR|default("norandommap=1,refill_buffers=1,ss=iops:10%,ss_dur=30s,ss_ramp=10s", true) }}
+#
+# Generic non-SS Continuum:
+#   extra_opts = {{ BENCH_EXT_OPTS_STR|default("norandommap=1,refill_buffers=1", true) }}
+#
+#------------------------------------------------------------------------------#
+# REF: https://github.com/louwrentius/fio-plot/blob/master/bench_fio/README.md
+#------------------------------------------------------------------------------#
+# :: TYPE == device, file, directory, rbd
+# :; TARGET == device / directory / file / rbd-image to be tested via TYPE
+# :: ENGINE == `fio --enghelp` for full list of available io-engines
+#------------------------------------------------------------------------------#
